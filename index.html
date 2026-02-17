@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Xiaoyu Yan</title>
+  <meta name="description" content="Academic homepage of Xiaoyu Yan (Northwestern University)." />
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --card:#f9fafb;
+      --link:#2563eb;
+      --max:1120px;
+      --radius:14px;
+      --shadow: 0 1px 0 rgba(17,24,39,.04);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.6;
+    }
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .topbar{
+      position:sticky; top:0; z-index:10;
+      background:rgba(255,255,255,.9);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:10px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .dot{width:10px;height:10px;border-radius:50%;background:var(--link)}
+    .menu{
+      display:flex; gap:14px; flex-wrap:wrap;
+      font-size:14px;
+    }
+    .menu a{color:var(--text); opacity:.85}
+    .menu a:hover{opacity:1; text-decoration:none}
+
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:24px 18px 56px;
+      display:grid;
+      grid-template-columns: 330px 1fr;
+      gap:22px;
+      align-items:start;
+    }
+    @media (max-width: 920px){
+      .wrap{grid-template-columns:1fr}
+      .topbar{position:relative}
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow);
+    }
+    .profile{
+      display:flex; flex-direction:column; gap:14px;
+      position:sticky; top:68px;
+    }
+    @media (max-width: 920px){
+      .profile{position:relative; top:auto}
+    }
+
+    .avatar{
+      width:122px; height:122px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      object-fit:cover;
+      background:#fff;
+    }
+    .name{font-size:26px; font-weight:900; line-height:1.15}
+    .role{color:var(--muted); font-weight:650; margin-top:4px}
+    .bio{color:#111827; font-size:14.6px; margin:10px 0 0}
+
+    .links{
+      display:flex; flex-wrap:wrap; gap:10px;
+      font-size:14px;
+      padding-top:12px;
+      margin-top:12px;
+      border-top:1px dashed var(--line);
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:6px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:#fff;
+      color:var(--text);
+    }
+    .pill:hover{border-color:#cbd5e1; text-decoration:none}
+    .note{
+      font-size:13px;
+      color:var(--muted);
+      border-left:3px solid var(--line);
+      padding-left:10px;
+      margin:10px 0 0;
+    }
+
+    .main{
+      display:flex; flex-direction:column; gap:18px;
+    }
+    section{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow);
+    }
+    h2{
+      margin:0 0 10px 0;
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+    .sub{color:var(--muted); font-size:14px; margin-top:-4px}
+    .hr{height:1px; background:var(--line); margin:12px 0}
+    .list{margin:0; padding-left:18px}
+    .item{
+      padding:10px 0;
+      border-top:1px solid var(--line);
+    }
+    .item:first-child{border-top:none; padding-top:0}
+    .row{
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      align-items:baseline;
+    }
+    .title{font-weight:800}
+    .meta{color:var(--muted); font-size:13.5px}
+    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
+    .tag{
+      font-size:12px; color:#111827; background:#f3f4f6;
+      border:1px solid var(--line);
+      padding:4px 8px; border-radius:999px;
+    }
+
+    .pub-title{font-weight:850}
+    .pub-venue{color:var(--muted); font-size:13.5px}
+    .pub-authors{color:#111827; font-size:14px; margin-top:2px}
+
+    .footer{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:18px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* --- Badges + BibTeX --- */
+    .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+    .badge{
+      display:inline-flex;align-items:center;
+      font-size:12px;font-weight:700;
+      padding:3px 8px;border-radius:999px;
+      border:1px solid var(--line);
+      background:#f3f4f6;color:#111827;
+    }
+    .badge.accepted{background:#ecfdf5}
+    .badge.presented{background:#eff6ff}
+    .badge.journal{background:#fff7ed}
+    .badge.workshop{background:#faf5ff}
+
+    details.bib{
+      margin-top:10px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:#fff;
+      padding:10px 12px;
+    }
+    details.bib > summary{
+      cursor:pointer;
+      font-size:13.5px;
+      color:var(--muted);
+      font-weight:650;
+      user-select:none;
+    }
+    details.bib code{
+      display:block;
+      white-space:pre-wrap;
+      word-break:break-word;
+      font-size:12.5px;
+      color:#111827;
+      margin-top:10px;
+    }
+    .copybtn{
+      margin-top:10px;
+      display:inline-flex;align-items:center;gap:6px;
+      font-size:12.5px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      cursor:pointer;
+    }
+    .copybtn:hover{border-color:#cbd5e1}
+    .smallmuted{color:var(--muted);font-size:12.5px;margin-left:8px}
+  </style>
+</head>
+
+<body>
+  <!-- Top Navigation -->
+  <div class="topbar">
+    <div class="nav">
+      <div class="brand"><span class="dot"></span> <span>Xiaoyu Yan</span></div>
+      <div class="menu">
+        <a href="#home">Home</a>
+        <a href="#news">News</a>
+        <a href="#research">Research</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#publications">Publications</a>
+        <a href="assets/cv.pdf" target="_blank" rel="noreferrer">CV</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap" id="home">
+    <!-- Left Profile Card -->
+    <aside class="profile">
+      <div class="card">
+        <img class="avatar" src="assets/avatar.jpg" alt="Portrait of Xiaoyu Yan" />
+        <div style="margin-top:10px">
+          <div class="name">Xiaoyu Yan</div>
+          <div class="role">Ph.D. Student · Northwestern University</div>
+          <div class="meta">Advisor: Yu (Marco) Nie</div>
+        </div>
+
+        <p class="bio">
+          I am a Ph.D. student at <b>Northwestern University</b>, working with <b>Prof. Yu (Marco) Nie</b>.
+          My research interests include <b>LLMs for transportation</b>, <b>urban computing</b>,
+          <b>transit design</b>, and <b>optimization</b>.
+        </p>
+
+        <div class="links" aria-label="External links">
+          <a class="pill" href="mailto:xiaoyu.yan@northwestern.edu">Email</a>
+          <a class="pill" href="https://scholar.google.com/citations?hl=en&user=9VGFVH0AAAAJ" target="_blank" rel="noreferrer">Google Scholar</a>
+          <a class="pill" href="https://www.linkedin.com/in/xiaoyu-yan-5127011a2/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="pill" href="assets/cv.pdf" target="_blank" rel="noreferrer">CV (PDF)</a>
+        </div>
+
+        <p class="note">
+          If you’d like to collaborate, feel free to reach out by email.
+        </p>
+      </div>
+
+      <div class="card" id="research">
+        <h2>Research Directions</h2>
+        <div class="sub">Current themes</div>
+        <div class="hr"></div>
+        <ul class="list">
+          <li><b>LLMs for transportation policy & planning</b> (agent-based decision platforms, alignment)</li>
+          <li><b>Urban computing</b> (mobility data mining, spatiotemporal modeling)</li>
+          <li><b>Transit design & operations</b> (fixed-route + paratransit integration, emerging mobility)</li>
+          <li><b>Optimization</b> (resource allocation, system design under constraints)</li>
+        </ul>
+
+        <div class="hr"></div>
+        <div class="sub">Keywords</div>
+        <div class="tags">
+          <span class="tag">Multi-agent LLM</span>
+          <span class="tag">RAG</span>
+          <span class="tag">Travel behavior</span>
+          <span class="tag">Transit design</span>
+          <span class="tag">Optimization</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Right Main Content -->
+    <main class="main">
+      <section id="news">
+        <h2>News</h2>
+        <div class="sub">Selected updates</div>
+
+        <div class="item">
+          <div class="row">
+            <div class="title">Paper accepted at NeurIPS 2025 Workshop (Responsible and Trustworthy Foundation Models)</div>
+            <div class="meta">2025</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="row">
+            <div class="title">Presented at the Transportation Research Board (TRB) 104th Annual Meeting</div>
+            <div class="meta">2025</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+
+        <div class="item">
+          <div class="row">
+            <div class="title">Northwestern University — Ph.D. in Transportation System Analysis and Planning</div>
+            <div class="meta">Expected Jun. 2027</div>
+          </div>
+          <div class="meta">Evanston, IL · Advisor: Yu (Marco) Nie</div>
+        </div>
+
+        <div class="item">
+          <div class="row">
+            <div class="title">Northwestern University — M.S. in Transportation System Analysis and Planning</div>
+            <div class="meta">Jun. 2025</div>
+          </div>
+          <div class="meta">Evanston, IL</div>
+        </div>
+
+        <div class="item">
+          <div class="row">
+            <div class="title">University of Illinois Urbana-Champaign — B.Sc. in Civil Engineering (Highest Honor)</div>
+            <div class="meta">Jun. 2023</div>
+          </div>
+          <div class="meta">Urbana-Champaign, IL</div>
+        </div>
+
+        <div class="item">
+          <div class="row">
+            <div class="title">Zhejiang University — B.Eng. in Civil Engineering (Rank: 1/37)</div>
+            <div class="meta">Jun. 2023</div>
+          </div>
+          <div class="meta">Hangzhou, China</div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h2>Experience</h2>
+
+        <div class="item">
+          <div class="row">
+            <div class="title">Research Scientist Intern · Alibaba</div>
+            <div class="meta">Internship</div>
+          </div>
+          <div class="meta">Research and development in mobility data mining and intelligent transportation (details can be expanded).</div>
+          <div class="tags">
+            <span class="tag">Mobility Data</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Urban Computing</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="row">
+            <div class="title">Graduate Researcher · Northwestern University</div>
+            <div class="meta">Sep. 2023 – Present</div>
+          </div>
+          <div class="meta">Transportation systems, mobility analytics, transit design & optimization.</div>
+        </div>
+      </section>
+
+      <section id="publications">
+        <h2>Publications & Presentations</h2>
+        <div class="sub">Selected list · <b>Your name is bolded</b></div>
+
+        <div class="item">
+          <div class="pub-title">Addressing the alignment problem in transportation policy making: an LLM approach</div>
+          <div class="pub-authors"><b>Xiaoyu Yan</b>, Tianyi Dai, Yu (Marco) Nie.</div>
+          <div class="badges">
+            <span class="badge workshop">Workshop</span>
+            <span class="badge presented">Presented</span>
+            <span class="badge">2025</span>
+          </div>
+          <div class="pub-venue">NeurIPS 2025 Workshop: Responsible and Trustworthy Foundation Models.</div>
+
+          <details class="bib">
+            <summary>BibTeX</summary>
+            <code id="bib-1">@inproceedings{yan2025alignment,
+  title     = {Addressing the alignment problem in transportation policy making: an LLM approach},
+  author    = {Yan, Xiaoyu and Dai, Tianyi and Nie, Yu (Marco)},
+  booktitle = {NeurIPS 2025 Workshop: Responsible and Trustworthy Foundation Models},
+  year      = {2025},
+  note      = {Presented at workshop}
+}</code>
+            <button class="copybtn" onclick="copyBib('bib-1')">Copy BibTeX</button>
+            <span class="smallmuted">Tip: paste into your .bib file</span>
+          </details>
+        </div>
+
+        <div class="item">
+          <div class="pub-title">Joint design of fixed-route and paratransit services with autonomous pods</div>
+          <div class="pub-authors"><b>Xiaoyu Yan</b>, Hao Zheng, Yu (Marco) Nie.</div>
+          <div class="badges">
+            <span class="badge presented">Presented</span>
+            <span class="badge">TRB</span>
+            <span class="badge">2025</span>
+          </div>
+          <div class="pub-venue">Transportation Research Board 104th Annual Meeting, Washington, D.C. (TRBAM-25-05686), 2025.</div>
+
+          <details class="bib">
+            <summary>BibTeX</summary>
+            <code id="bib-2">@inproceedings{yan2025pods,
+  title     = {Joint design of fixed-route and paratransit services with autonomous pods},
+  author    = {Yan, Xiaoyu and Zheng, Hao and Nie, Yu (Marco)},
+  booktitle = {Transportation Research Board 104th Annual Meeting},
+  year      = {2025},
+  address   = {Washington, D.C.},
+  note      = {Presentation Number: TRBAM-25-05686}
+}</code>
+            <button class="copybtn" onclick="copyBib('bib-2')">Copy BibTeX</button>
+          </details>
+        </div>
+
+        <div class="item">
+          <div class="pub-title">Understanding commuter preferences for on-demand shared autonomous electric vehicles</div>
+          <div class="pub-authors">Zhen Dong, Cheng Chen, Jing Ouyang, <b>Xiaoyu Yan</b>, Cheng Liao, Daeho Lee, X. Chen.</div>
+          <div class="badges">
+            <span class="badge journal">Journal</span>
+            <span class="badge accepted">Accepted</span>
+            <span class="badge">TR Part D</span>
+          </div>
+          <div class="pub-venue">Transportation Research Part D (Accepted). Manuscript No: TRD-D-24-02194.</div>
+
+          <details class="bib">
+            <summary>BibTeX</summary>
+            <code id="bib-3">@article{dong2024saev,
+  title   = {Understanding commuter preferences for on-demand shared autonomous electric vehicles},
+  author  = {Dong, Zhen and Chen, Cheng and Ouyang, Jing and Yan, Xiaoyu and Liao, Cheng and Lee, Daeho and Chen, X.},
+  journal = {Transportation Research Part D: Transport and Environment},
+  year    = {2024},
+  note    = {Accepted. Manuscript No: TRD-D-24-02194}
+}</code>
+            <button class="copybtn" onclick="copyBib('bib-3')">Copy BibTeX</button>
+          </details>
+        </div>
+
+        <div class="item">
+          <div class="pub-title">Understanding bike-sharing usage patterns of members and casual users: A case study in New York City</div>
+          <div class="pub-authors">Kai Wang, <b>Xiaoyu Yan</b>, Ziqi Zhu, X. M. Chen.</div>
+          <div class="badges">
+            <span class="badge journal">Journal</span>
+            <span class="badge">2024</span>
+          </div>
+          <div class="pub-venue">Travel Behaviour and Society, 36, 100793 (2024).</div>
+
+          <details class="bib">
+            <summary>BibTeX</summary>
+            <code id="bib-4">@article{wang2024bikeshare,
+  title   = {Understanding bike-sharing usage patterns of members and casual users: A case study in New York City},
+  author  = {Wang, Kai and Yan, Xiaoyu and Zhu, Ziqi and Chen, X. M.},
+  journal = {Travel Behaviour and Society},
+  volume  = {36},
+  pages   = {100793},
+  year    = {2024}
+}</code>
+            <button class="copybtn" onclick="copyBib('bib-4')">Copy BibTeX</button>
+          </details>
+        </div>
+
+        <div class="item">
+          <div class="pub-title">Multi-scale urban passenger transportation CO2 emission calculation platform for smart mobility management</div>
+          <div class="pub-authors">J. Liu, J. Li, Y. Chen, S. Lian, J. Zeng, M. Geng, H. Zheng, Z. Dong, Y. He, P. Huang, Z. Zhao, <b>Xiaoyu Yan</b>, Q. Hu, L. Wang, D. Yang, Z. Zhu, Y. Sun, W. Shang, D. Wang, L. Zhang, S. Hu, X. Chen.</div>
+          <div class="badges">
+            <span class="badge journal">Journal</span>
+            <span class="badge">2023</span>
+          </div>
+          <div class="pub-venue">Applied Energy, 331, 120407 (2023).</div>
+
+          <details class="bib">
+            <summary>BibTeX</summary>
+            <code id="bib-5">@article{liu2023co2platform,
+  title   = {Multi-scale urban passenger transportation CO2 emission calculation platform for smart mobility management},
+  author  = {Liu, J. and Li, J. and Chen, Y. and Lian, S. and Zeng, J. and Geng, M. and Zheng, H. and Dong, Z. and He, Y. and Huang, P. and Zhao, Z. and Yan, Xiaoyu and Hu, Q. and Wang, L. and Yang, D. and Zhu, Z. and Sun, Y. and Shang, W. and Wang, D. and Zhang, L. and Hu, S. and Chen, X.},
+  journal = {Applied Energy},
+  volume  = {331},
+  pages   = {120407},
+  year    = {2023}
+}</code>
+            <button class="copybtn" onclick="copyBib('bib-5')">Copy BibTeX</button>
+          </details>
+        </div>
+
+        <div class="item">
+          <div class="pub-title">Development of a Steel Fiber-Reinforced Rubber Concrete for Jacket of Bridge Piers Against Vehicular Impacts: Preliminary Results</div>
+          <div class="pub-authors">D. Lai, L. Lin, <b>Xiaoyu Yan</b>, Z. Li, K. Xu, C. Demartino, Y. Xiao.</div>
+          <div class="badges">
+            <span class="badge">Springer</span>
+            <span class="badge">2021</span>
+          </div>
+          <div class="pub-venue">In: European Association on Quality Control of Bridges and Structures (Springer), 2021.</div>
+
+          <details class="bib">
+            <summary>BibTeX</summary>
+            <code id="bib-6">@incollection{lai2021rubberconcrete,
+  title     = {Development of a Steel Fiber-Reinforced Rubber Concrete for Jacket of Bridge Piers Against Vehicular Impacts: Preliminary Results},
+  author    = {Lai, D. and Lin, L. and Yan, Xiaoyu and Li, Z. and Xu, K. and Demartino, C. and Xiao, Y.},
+  booktitle = {Proceedings of the International Conference of the European Association on Quality Control of Bridges and Structures},
+  publisher = {Springer, Cham},
+  pages     = {1144--1151},
+  year      = {2021}
+}</code>
+            <button class="copybtn" onclick="copyBib('bib-6')">Copy BibTeX</button>
+          </details>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <div class="meta">
+          Email: <a href="mailto:xiaoyu.yan@northwestern.edu">xiaoyu.yan@northwestern.edu</a><br/>
+          Affiliation: Northwestern University<br/>
+          Location: Evanston, IL, USA
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="footer">
+    © <span id="y"></span> Xiaoyu Yan · Hosted on GitHub Pages
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    function copyBib(id){
+      const el = document.getElementById(id);
+      if(!el) return;
+      const text = el.innerText;
+      navigator.clipboard.writeText(text);
+    }
+  </script>
+</body>
+</html>
