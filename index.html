@@ -120,7 +120,8 @@
       color:var(--muted); margin:0 0 22px;
     }
     .hero .role strong{color:var(--ink); font-weight:700}
-    .hero .lede{font-size:19px; line-height:1.6; max-width:34em; margin:0 0 30px}
+    .hero .lede{font-size:19px; line-height:1.6; max-width:34em; margin:0 0 14px}
+    .hero .lede:last-of-type{margin-bottom:30px}
     .actions{display:flex; flex-wrap:wrap; align-items:center; gap:10px 22px; font-family:var(--sans); font-size:16px; font-weight:600}
     .actions a{text-decoration:none}
     .actions a:hover{text-decoration:underline}
@@ -255,15 +256,6 @@
     .plain li{display:flex; justify-content:space-between; gap:20px; align-items:baseline; padding:10px 0; border-top:1px solid var(--rule)}
     .plain li:first-child{border-top:0; padding-top:0}
 
-    /* ---------- Contact ---------- */
-    .contact .email{
-      display:inline-block; font-family:var(--sans); font-weight:700;
-      font-size:clamp(22px, 4.2vw, 34px); letter-spacing:-.02em; line-height:1.2;
-      color:var(--ink); text-decoration-color:var(--accent); text-decoration-thickness:3px; text-underline-offset:6px;
-      overflow-wrap:anywhere; margin:0 0 18px;
-    }
-    .contact .email:hover{color:var(--accent-ink)}
-    .contact .actions{margin-bottom:18px}
     .address{font-family:var(--sans); font-size:14.5px; color:var(--muted); margin:0}
     footer{border-top:1px solid var(--rule); padding:22px 0 40px; font-family:var(--sans); font-size:13.5px; color:var(--muted)}
   </style>
@@ -297,6 +289,10 @@
             and transit design, with the goal of building a next generation of decision-making that is
             fairer and more sustainable. I enjoy searching for new solutions in a world that never
             stops changing.
+          </p>
+          <p class="lede">
+            I am always happy to chat and collaborate. Feel free to reach out by
+            <a href="mailto:xiaoyu.yan@northwestern.edu">email</a>.
           </p>
           <div class="actions">
             <a href="mailto:xiaoyu.yan@northwestern.edu">Email</a>
@@ -642,22 +638,6 @@
       </div>
     </section>
 
-    <!-- Contact -->
-    <section class="section contact" id="contact" aria-labelledby="contact-h">
-      <div class="wrap">
-        <h2 id="contact-h">Contact</h2>
-        <div class="body">
-          <p>I'm glad to hear about collaborations on AI for transportation and urban policy.</p>
-          <a class="email" href="mailto:xiaoyu.yan@northwestern.edu">xiaoyu.yan@northwestern.edu</a>
-          <div class="actions">
-            <a href="https://scholar.google.com/citations?hl=en&amp;user=9VGFVH0AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
-            <a href="https://www.linkedin.com/in/xiaoyu-yan-5127011a2/" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="assets/resume.pdf">Resume (PDF)</a>
-          </div>
-          <p class="address">Department of Civil and Environmental Engineering, Northwestern University, Evanston, IL</p>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer>
